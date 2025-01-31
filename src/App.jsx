@@ -1,11 +1,13 @@
 import './App.css';
 import ShopifyStoreForm from './Components/ShopifyStoreForm';
+import ListShopifyStores from './Components/ListShopifyStores';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import { Suspense } from 'react';
 
 function App() {
   return (
@@ -37,7 +39,11 @@ function App() {
   );
 }
 function Stores() {
-  return <h2>List Stores</h2>;
+  return (
+    <Suspense>
+      <ListShopifyStores fallback={<div>Loading...</div>}/> 
+    </Suspense>
+  )
 }
 
 function Addstore() {
